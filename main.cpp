@@ -1112,3 +1112,502 @@ void exchangeCurrency(long passcodez, int choice) {
     }
 
 }
+void currency_exch(){
+
+    int choice;
+
+    printf("Enter account number: ");
+    scanf("%ld", &passcodez);
+
+    printf("1. Exchange USD to INR\n");
+    printf("2. Exchange EUR to INR\n");
+    printf("3. Exchange GBP to INR\n");
+    printf("4. Exchange INR to USD\n");
+    printf("5. Exchange INR to EUR\n");
+    printf("6. Exchange INR to GBP\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    exchangeCurrency(passcodez, choice);
+}
+
+void signin(){
+gotoxy(68,9);
+
+    printf("Sign In-");
+    delay(500000);
+    gotoxy(60, 11);
+    system("cls");
+    tempelate();
+    gotoxy(60, 5);
+   printf(" Enter Bank Account Number:");
+   gotoxy(62,7);
+   scanf("%ld", &Acc_No);
+   getchar();
+    long temp_acc;
+   while(1){
+    if(fscanf( fptr ,"%ld", &temp_acc)!=EOF){
+    if(Acc_No==temp_acc){
+        break;
+    }
+    }
+    else{
+        system("cls");
+        gotoxy(48,5);
+        printf("Account does not exist, Please recheck the account number entered-");
+        tempelate();
+        gotoxy(60, 7);
+        printf(" Please Re-enter Bank Account Number:");
+        gotoxy(62,9);
+        scanf("%ld", &Acc_No);
+        fseek(fptr, 0, SEEK_SET);
+        continue;
+    }}
+   gotoxy(62, 9);
+   printf("Enter 6-digit Passcode");
+   gotoxy(62,11);
+   scanf("%ld", &passcode);
+   getchar();
+   fscanf( fptr ,"%ld", &temp_acc);
+   if(passcode==decrypt(temp_acc)){
+    delay(500000);
+   }else{
+    while(1){
+    system("cls");
+    tempelate();
+    gotoxy(62,5);
+    printf("Enter the passcode again-");
+    scanf("%ld", &passcode);
+    if(passcode==decrypt(temp_acc)){
+        break;
+    }
+    }
+   }
+   fscanf(fptr, "%ld", &balance);
+       gotoxy(68,13);
+       printf("Logging in...");
+       delay(750000);
+       fclose(fptr);
+        options();
+        fptr=fopen("acc_details.txt", "r+");
+}
+void insurance(){
+}
+
+
+void displayOptions() {
+    system("cls");
+    tempelate();
+    gotoxy(21, 7);
+    printf("Services Offered:");
+    gotoxy(21, 9);
+    printf("1. Savings Accounts: Earn interest on your savings while keeping your money safe.");
+    gotoxy(21, 10);
+    printf("2. Current Accounts: Manage your day-to-day transactions conveniently.");
+    gotoxy(21, 11);
+    printf("3. Stocks and Investments: Explore opportunities to grow your wealth through investments.");
+    gotoxy(21, 12);
+    printf("4. Digital Banking: Bank anytime, anywhere with our online and mobile banking services.");
+    gotoxy(21, 13);
+    printf("5. Customer Support: Receive assistance and guidance from our dedicated customer support team.");
+    gotoxy(21, 14);
+    printf("6. Foreign Exchange Services: Exchange currencies for international transactions and travel.");
+    gotoxy(21, 15);
+    printf("7. Insurance Products: Protect yourself and your assets with our range of insurance offerings.");
+    gotoxy(21,16);
+    printf("8. Exit Securely");
+}
+
+void handleOption(int option) {
+    switch(option) {
+        case 1:
+            gotoxy(21,21);
+            printf("You chose Savings Accounts");
+            long inputAccountNumber;
+            gotoxy(21,22);
+    printf("Enter your account number: ");
+    scanf("%ld", &inputAccountNumber);
+
+    loadAccountDetailsavings(inputAccountNumber);
+
+    tempelate();
+    getchar();
+    system("cls");
+
+    int choice;
+    long amount;
+
+    gotoxy(40, 12);
+    printf("Welcome to Savings Account\n");
+
+    do {
+        tempelate();
+        gotoxy(40, 15);
+        printf("1. Deposit\n");
+        gotoxy(40, 16);
+        printf("2. Withdraw\n");
+        gotoxy(40, 17);
+        printf("3. Generate Monthly Statement\n");
+        gotoxy(40, 18);
+        printf("4. Exit\n");
+        gotoxy(40, 19);
+        printf("Enter your choice (1-4): ");
+        scanf("%d", &choice);
+        system("cls");
+
+        tempelate();
+        gotoxy(50, 20);
+        switch (choice) {
+            case 1:
+                printf("Enter amount to deposit: ");
+                scanf("%ld", &amount);
+                deposit(amount);
+                applyInterest();
+                break;
+            case 2:
+                printf("Enter amount to withdraw: ");
+                scanf("%ld", &amount);
+                withdraw(amount);
+                break;
+            case 3:
+                generateMonthlyStatement();
+                break;
+            case 4:
+                printf("Exiting...\n");
+                delay(500000);
+                options();
+                break;
+            default:
+                gotoxy(40,25);
+                printf("Invalid choice! Please enter a number between 1 and 4.\n");
+        }
+
+    } while (choice != 4);
+
+
+            break;
+        case 2:
+            gotoxy(21,21);
+            printf("You chose Current Accounts\n");
+            tempelate();
+            gotoxy(55,9);
+            printf("This site is under construction...");
+            delay(750000);
+            gotoxy(55,11);
+            printf("Taking you back to the options page");
+            delay(500000);
+            options();
+            break;
+
+        case 3:
+            gotoxy(21,21);
+            printf("You chose Stocks and Investments\n");
+            Stock stocks[NUM_STOCKS];
+    double balance;
+    long account_number;
+
+    srand(time(NULL)); // Seed for random number generation
+
+    initialize_stocks(stocks, NUM_STOCKS);
+
+    tempelate();
+
+    // Prompt for account number
+    gotoxy(40, 8);
+    printf("Enter your account number: ");
+    scanf("%ld", &account_number);
+
+    // Read balance associated with the account number
+    balance = read_balance(account_number);
+
+    while (1) {
+        gotoxy(40, 10);
+        printf(" 1. View Stock Market\n");
+        gotoxy(40, 11);
+        printf(" 2. Buy Stocks\n");
+        gotoxy(40, 12);
+        printf(" 3. Sell Stocks\n");
+        gotoxy(40, 13);
+        printf(" 4. Exit\n");
+        gotoxy(40, 14);
+        printf(" Enter your choice: ");
+        int choice;
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                system("cls");
+                simulate_stock_market(stocks, NUM_STOCKS);
+                gotoxy(40,25);
+                printf("Press Enter to return to the main menu...");
+                getch();
+                getch();
+                system("cls");
+                tempelate();
+                break;
+            case 2:
+                system("cls");
+                buy_stocks(stocks, NUM_STOCKS, &balance);
+                write_balance(account_number, balance); // Write updated balance to file
+                system("cls");
+                tempelate();
+                break;
+            case 3:
+                system("cls");
+                sell_stocks(stocks, NUM_STOCKS, &balance);
+                write_balance(account_number, balance); // Write updated balance to file
+                system("cls");
+                tempelate();
+                break;
+            case 4:
+                write_balance(account_number, balance); // Write final balance before exiting
+                exit(0);
+            default:
+                gotoxy(40, 20);
+                printf("Invalid choice. Please try again.\n");
+        }
+    }
+
+            break;
+        case 4:
+            gotoxy(21,21);
+            printf("You chose Digital Banking\n");
+            tempelate();
+    transferMoney();
+            break;
+
+        case 5:
+            gotoxy(21,21);
+            printf("You chose Customer Support\n");
+            displayCustomerSupport();
+            break;
+        case 6:
+            gotoxy(21,21);
+            printf("You chose Foreign Exchange Services\n");
+            currency_exch();
+            break;
+        case 7:
+            gotoxy(21,21);
+            printf("You chose Insurance Products\n");
+            displayInsuranceSchemes();
+            break;
+        case 8:
+            gotoxy(21,21);
+            printf("Exitting securely...");
+            delay(500000);
+            endh();
+            break;
+
+
+        default:
+            printf("Invalid option\n");
+    }
+}
+void options(){
+ tempelate();
+    displayOptions();
+
+    int option;
+    gotoxy(21, 19);
+    printf("Enter your choice: ");
+    scanf("%d", &option);
+    handleOption(option);
+
+
+    getchar();}
+
+
+int main() {
+
+fptr=fopen("acc_details.txt", "a+");
+fptr2=fopen("personal_details.txt", "a+");
+fseek(fptr,0, SEEK_SET);
+fseek(fptr2,0, SEEK_SET);
+    char ch;
+gotoxy(20,1);
+printf("%c",201);
+int i;
+for( i=0; i<width-2; i++){
+    printf("%c", 205);
+}
+printf("%c", 187);
+printf("\n");
+gotoxy(20,2);
+for( i=0; i<height-2; i++){
+    gotoxy(20,i+2);
+    printf("%c", 186);
+}
+gotoxy(20+width-1, 2);
+for( i=0; i<height-2; i++){
+gotoxy(20+width-1, 2+i);
+printf("%c", 186);
+}
+gotoxy(20, height);
+printf("%c",200);
+for( i=0; i<width-2; i++){
+printf("%c", 205);
+}
+printf("%c",188);
+gotoxy(62,3);
+printf("IIT Jodhpur Banking systum");
+gotoxy(60,5);
+delay(500000);
+printf("Are you already an user?(y/n)");
+gotoxy(74,7);
+ch=getch();
+if(ch=='y' || ch=='Y'){
+    gotoxy(68,9);
+
+    printf("Sign In-");
+    delay(1000000);
+    signin();
+//main screen   ******************************************************************************************************************************
+
+
+}
+ else if(ch=='n' || ch=='N'){
+system("cls");
+tempelate();
+gotoxy(21,6);
+printf("Welcome to IIT Jodhpur Bank, where we blend innovation with tradition to offer you a seamless banking experience");
+gotoxy(21,7);
+ printf("As a premier financial institution, we pride ourselves on our commitment to excellence, integrity, ");
+ gotoxy(21,8);
+ printf("and customer satisfaction.");
+gotoxy(21,10);
+printf("At IIT Jodhpur Bank, we understand that each customer is unique, with diverse financial needs and aspirations.");
+gotoxy(21,11);
+printf("Whether you're a student, faculty member, staff, or a resident of the vibrant Jodhpur community we're here to ");
+gotoxy(21,12);
+printf("serve with personalized solutions tailored to your requirements.");
+gotoxy(21,14);
+printf("Experience the difference with IIT Jodhpur Bank where innovation meets tradition, and your financial well-being");
+gotoxy(21,15);
+printf("is our top priority. Join us today and embark on a journey towards financial success and prosperity.");
+delay(750000);
+gotoxy(55,18);
+printf("Would you like to check our services- (y/n) ");
+ch=getch();
+if(ch=='y' || ch=='Y'){
+    system("cls");
+    tempelate();
+    gotoxy(25, 6);
+    printf("Services Offered:");
+    gotoxy(25, 8);
+    printf("1. Savings Accounts: Earn interest on your savings while keeping your money safe.");
+    gotoxy(25, 9);
+    printf("2. Current Accounts: Manage your day-to-day transactions conveniently.");
+    gotoxy(25, 10);
+    printf("3. Loans: Access financial support for your various needs with flexible repayment options.");
+    gotoxy(25, 11);
+    printf("4. Stocks and Investments: Explore opportunities to grow your wealth through investments.");
+    gotoxy(25, 12);
+    printf("5. Digital Banking: Bank anytime, anywhere with our online and mobile banking services.");
+    gotoxy(25, 13);
+    printf("6. Debit and Credit Cards: Enjoy the convenience of cashless transactions with our cards.");
+    gotoxy(25, 14);
+    printf("7. Customer Support: Receive assistance and guidance from our dedicated customer support team.");
+    gotoxy(25, 15);
+    printf("8. Foreign Exchange Services: Exchange currencies for international transactions and travel.");
+    gotoxy(25, 16);
+    printf("9. Insurance Products: Protect yourself and your assets with our range of insurance offerings.");
+    delay(750000);
+    gotoxy(48, 19);
+    printf("Would you like to sign up for our services(y/n)");
+    gotoxy(55,20);
+    char ch2=getch();
+    if(ch2=='y'|| ch2=='Y'){
+        system("cls");
+        tempelate();
+        gotoxy(72,5);
+        printf("Sign up-");
+        gotoxy(55,7);
+        printf("Enter your details below:");
+        gotoxy(55,9);
+        printf("Enter your First Name- ");
+        char lname[50];
+        char DOB[15];
+        fgets(fname,50, stdin);
+        fname[strlen(fname)-1]='\0';
+        gotoxy(55,10);
+        printf("Enter your Last Name- ");
+        fgets(lname,50, stdin);
+        lname[strlen(lname)-1]='\0';
+        gotoxy(55, 11);
+        printf("Enter your Date of Birth (dd/mm/yyyy)  ");
+        fgets(DOB, 15, stdin);
+        DOB[strlen(DOB)+1]='\0';
+        system("cls");
+        tempelate();
+        gotoxy(65,5);
+        printf("Hello, %s ", fname);
+        gotoxy(55,7);
+        printf("Let's set you up further...");
+        gotoxy(55,9);
+        printf("Generating your account number...");
+        delay(750000);
+        Acc_No=generateRandomNumber(10);
+        gotoxy(55,9);
+        printf("Your Account number is %ld", Acc_No );
+        gotoxy(55, 11);
+        printf("Would you like an randomly generated passcode(y/n) ");
+        char ch3=getch();
+        gotoxy(55,13);
+        if(ch3=='y'){
+                passcode= generateRandomNumber(6);
+            printf("Your passcode is %ld", passcode);
+            gotoxy(55,14);
+            printf("Please secure the passcode and press any key ");
+            getch();
+            gotoxy(55,16);
+            printf("Taking you back to Sign-in page");
+            delay(750000);
+        }
+        else if(ch3=='n'){
+            gotoxy(55,13);
+            printf("Enter your custom passcode(6-digits)- ");
+            scanf("%ld", &passcode);}
+
+            fprintf(fptr ,"%ld ",Acc_No );
+            long encrypted;
+            encrypted=encrypt(passcode);
+            fprintf(fptr ,"%ld ", encrypted);
+            fprintf(fptr ,"10000 ");
+            fprintf(fptr ,"%c", '\n');
+            balance=10000;
+
+            fprintf(fptr2, "%s ", fname);
+            fprintf(fptr2, "%s ", lname);
+            int a=strlen(DOB);
+            DOB[a+1]='\n';
+            fprintf(fptr2, "%s", DOB);
+            fclose(fptr);
+            fclose(fptr2);
+            fptr=fopen("acc_details.txt", "a+");
+            fptr2=fopen("personal_details.txt", "a+");
+            fseek(fptr,0,SEEK_SET);
+            fseek(fptr2,0,SEEK_SET);
+            signin();
+
+        }
+        else if(ch2=='n' ){
+            system("cls");
+            tempelate();
+            gotoxy(40,7);
+            printf("Thank you for enquiring in our bank, we hope to see you again!!");
+            endh();
+        }
+    }
+    else if(ch=='n' || ch=="N"){
+        system("cls");
+            tempelate();
+            gotoxy(40,7);
+            printf("Thank you for enquiring in our bank, we hope to see you again!!");
+            endh();
+    }
+}
+
+fclose(fptr);
+fclose(fptr2);
+    return 0;
+}
