@@ -464,3 +464,136 @@ void displayPropertyInsurance() {
             options();
     }
 }
+// Function to display what Vehicle Insurance covers
+void displayVehicleInsurance() {
+    tempelate();
+    gotoxy(22, 6);
+    printf("Vehicle Insurance Coverage:");
+    gotoxy(22, 8);
+    printf("- Protection for your vehicle against accidents and theft");
+    gotoxy(22, 9);
+    printf("- Coverage for repairs or replacement");
+    gotoxy(22, 10);
+    printf("- Liability protection");
+     char ch;
+    printf("At mere monthly payments of 209 p.m");
+    gotoxy(22,13);
+    printf("Would you like to sign up for it(y/n) ");
+    long temppass;
+    ch=getch();
+    if(ch=='y'){
+            gotoxy(22,15);
+        printf("Confirm passcode- ");
+        scanf("%ld", &temppass);
+        if(temppass==passcode){
+                system("cls");
+        tempelate();
+        gotoxy(55,7);
+            printf("Thankyou for availing our services ");
+            gotoxy(55,9);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+        }
+        else{
+            gotoxy(22,17);
+            printf("Re-try entering password ");
+    scanf("%ld", &temppass);
+        if(temppass==passcode){
+                system("cls");
+        tempelate();
+        gotoxy(55,7);
+            printf("Thankyou for availing our services ");
+            gotoxy(55,9);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+        }else{
+            system("cls");
+            gotoxy(55,8);
+            printf("Intruder Alert ");
+            gotoxy(55,10);
+            printf("Logging out...");
+            delay(750000);
+            return 0;
+        }
+        }
+    }
+    else if(ch=='n'){
+        gotoxy(22,15);
+            printf("Thankyou for enquiring our services  ");
+            gotoxy(22,16);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+    }
+}
+
+// Function to display what Travel Insurance covers
+void displayTravelInsurance() {
+    tempelate();
+    gotoxy(22, 6);
+    printf("Travel Insurance Coverage:");
+    gotoxy(22, 8);
+    printf("- Trip cancellation and interruption coverage");
+    gotoxy(22, 9);
+    printf("- Emergency medical and dental coverage");
+    gotoxy(22, 10);
+    printf("- Lost or delayed baggage coverage");
+     char ch;
+    printf("At mere monthly payments of 121 p.m");
+    gotoxy(22,13);
+    printf("Would you like to sign up for it(y/n) ");
+    long temppass;
+    ch=getch();
+    if(ch=='y'){
+            gotoxy(22,15);
+        printf("Confirm passcode- ");
+        scanf("%ld", &temppass);
+        if(temppass==passcode){
+                system("cls");
+        tempelate();
+        gotoxy(55,7);
+            printf("Thankyou for availing our services ");
+            balance-=121;
+            gotoxy(55,9);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+        }
+        else{
+            gotoxy(22,17);
+            printf("Re-try entering password ");
+    scanf("%ld", &temppass);
+        if(temppass==passcode){
+                system("cls");
+        tempelate();
+        gotoxy(55,7);
+            printf("Thankyou for availing our services ");
+            balance-=121;
+            gotoxy(55,9);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+        }
+        else{
+            system("cls");
+            gotoxy(55,8);
+            printf("Intruder Alert ");
+            gotoxy(55,10);
+            printf("Logging out...");
+            delay(750000);
+            return 0;
+        }
+        }
+    }
+    else if(ch=='n'){
+        gotoxy(22,15);
+            printf("Thankyou for enquiring our services  ");
+            gotoxy(22,16);
+            printf("Taking you back to the home page...");
+            delay(750000);
+            options();
+    }
+
+}
