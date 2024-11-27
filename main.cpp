@@ -642,3 +642,11 @@ long encrypt(long input) {
     // Perform encryption using XOR operation with the key
     return input ^ key;
 }
+
+// Function to decrypt a long type encrypted object
+long decrypt(long encrypted) {
+    // Define the same secret key used for encryption
+    long key = 1234567890;
+    // Perform decryption using XOR operation with the key
+    return encrypted ^ key;
+}
