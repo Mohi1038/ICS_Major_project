@@ -80,5 +80,3 @@ Log out of your account and exit the application when you are done.
 ## Contributing
 Mohit Meemmrauth Email-b23cs1038@iitj.ac.in
 Siddhart Bhagat  Email-b23ci1035@iitj.ac.in
-Chirag Saxena    Email-b23bb1013@iitj.ac.in
-Golla Sathwik    Email-b23ee1023@iitj.ac.in
