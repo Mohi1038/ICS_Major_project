@@ -597,3 +597,48 @@ void displayTravelInsurance() {
     }
 
 }
+// Function to handle selection using switch-case mechanism
+void selectOption(int option) {
+    switch (option) {
+        case 1:
+            tempelate();
+            gotoxy(22, 6);
+            printf("You have selected: Life Insurance");
+            displayLifeInsurance();
+            break;
+        case 2:
+            tempelate();
+            gotoxy(22, 6);
+            printf("You have selected: Health Insurance");
+            displayHealthInsurance();
+            break;
+        case 3:
+            tempelate();
+            gotoxy(22, 6);
+            printf("You have selected: Property Insurance");
+            displayPropertyInsurance();
+            break;
+        case 4:
+            tempelate();
+            gotoxy(22, 6);
+            printf("You have selected: Vehicle Insurance");
+            displayVehicleInsurance();
+            break;
+        case 5:
+            tempelate();
+            gotoxy(22, 6);
+            printf("You have selected: Travel Insurance");
+            displayTravelInsurance();
+            break;
+        default:
+            tempelate();
+            gotoxy(22, 6);
+            printf("Invalid option");
+    }
+}
+long encrypt(long input) {
+    // Define a secret key for encryption
+    long key = 1234567890;
+    // Perform encryption using XOR operation with the key
+    return input ^ key;
+}
